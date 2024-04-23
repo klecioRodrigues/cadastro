@@ -1,3 +1,4 @@
+import 'package:cadastro/detalhes_page.dart';
 import 'package:cadastro/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +7,15 @@ class appWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: homePage(),
+      home: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const homePage(),
+          '/detahes': (context) => const DetalhesPage(),
+        },
+      ),
     );
   }
 }

@@ -23,7 +23,7 @@ class _homePageState extends State<homePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(
-          top: 30,
+          top: 100,
           left: 20,
           right: 20,
         ),
@@ -48,7 +48,7 @@ class _homePageState extends State<homePage> {
                   return null;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
@@ -60,22 +60,26 @@ class _homePageState extends State<homePage> {
                   labelText: 'Senha',
                 ),
                 validator: (senha) {
-                  if (senha!.length != 123456) {
-                    return 'Digite um senha';
+                  if (senha!.isEmpty) {
+                    return 'Digite um email';
+                  }
+                  if (senha.length > 6) {
+                    return 'Digite no maximo 6 caractes';
                   }
 
-                  if (!senha.contains('123456')) {
+                  if (senha.contains('123456')) {
                     return 'Digite um senha válido';
                   }
                   return null;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}
+                  Navigator.pushNamed(context, '/detahes');
                 },
                 child: const Text('Enviar'),
               ),
